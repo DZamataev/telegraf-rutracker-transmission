@@ -36,5 +36,5 @@ module.exports = {
     ONLY_USERNAME: process.env.ONLY_USERNAME || '',
 };
 ```
-* Make sure that you have Node.js and Docker installed and execute ```npm run deploy```
+* Make sure that you have Node.js and Docker installed and execute ```npm install && npm run deploy```
 * Optionally consider using ```npm run undeploy``` and ```npm run dev``` if you want to tear down installation or make changes
