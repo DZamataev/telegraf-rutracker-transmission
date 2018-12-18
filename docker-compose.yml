@@ -1,0 +1,28 @@
+version: '3.6'
+
+volumes:
+  # for persistence between restarts
+  redis-data: {}
+
+services:
+  redis:
+    image: redis:5.0.2-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    hostname: redis
+    volumes:
+      - redis-data:/data
+    ports:
+      - "6379"
+
+  bot:
+    build: abot/.
+    image: abot/abot
+    environment:
+      # HTTP_API_TOKEN: YOUR_API_TOKEN
+      SESSION_HOST: redis
+      SESSION_PORT: 6379
+      # ONLY_PRIVATE_CHAT: true
+      # ONLY_USERNAME: ''
+    restart: always
+    ports:
+      - "5000:5000"

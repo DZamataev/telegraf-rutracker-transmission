@@ -1,0 +1,55 @@
+greeting: Привет! Начните со /start
+start: |
+  Приветствую незнакомец! Я умею искать на Rutracker раздачи и добавлять их в закачки на ваш Transmission.
+    To switch to English use '/en'
+    Для входа на рутрекер используйте команду '/credentialsSetRutracker'
+    Для поиска используйте команду '/search ЗАПРОС' или скажите 'найди то-то'
+    Для конфигурации веб-клиента Transmission введите команду '/transmissionConfigure'
+    Для установки пути добавляемых закачек Transmission команда '/transmissionSetPath АБСОЛЮТНЫЙ_ПУТЬ'
+    Для просмотра статуса закачек Transmission команда '/transmissionStatus'
+    Для остановки всех закачек Transmission '/transmissionStopAll'
+    Для возобновления всех закачек Transmission '/transmissionStartAll'
+transmission_not_configured: Сначала настройте transmission командой /transmissionConfigure
+transmission_path_set: Установлен путь для всех закачек.
+transmission_no_torrents: Нет закачек.
+transmission_error: Ошибка при запросе.
+transmission_stopped_all: Все закачки остановлены.
+transmission_started_all: Все закачки возобновлены.
+transmission_download_added: Загрузка добавлена.
+
+begin_searching: Ищу по запросу '${term}'.
+pending_link_not_found: Не найдена ссылка для загрузки.
+search_is_over: Поиск окончен.
+try_search: Попробуйте /search или скажите что найти.
+
+enter_login: Введите логин.
+entered_login: Логин установлен, теперь введите пароль.
+entered_password: Пароль установлен, осуществляется вход...
+success: Успех!
+authentication_error: Не удалось авторизоваться. Проверьте правильность вводимых данных.
+authentication_warning: Не удалось войти на Rutracker, пожалуйста укажите свой логин и пароль командой /credentialsSetRutracker
+login_is_set: Теперь логин ${login} будет использоваться для входа на рутрекер. Удалите свое сообщение чтобы кто-нибудь не прочитал из него ваш пароль.
+private_chat_warning: Я работаю только в приватных чатах.
+username_warning: Я отвечаю только своему хозяину.
+no_results_found: Результатов не найдено.
+here_is_what_i_found: "Вот что удалось найти:"
+search_complete: Поиск завершен. Введите номер нужной раздачи.
+you_picked_torrent: Вы выбрали раздачу под номером *${index}* (${title}).
+magnet_link_is: |
+  Magnet-ссылка:
+  ```
+  ${uri}
+  ```
+download_suggestion: Желаете скачать? 
+
+transmission_configuration_wizard_error: Ошибка, попробуйте еще раз.
+transmission_configuration_wizard_enter_hostname: Введите имя хоста. Например mytransmission.no-ip.com.
+transmission_configuration_wizard_enter_port: Теперь введите порт.
+transmission_configuration_wizard_enter_http: HTTP или HTTPS?
+transmission_configuration_wizard_enter_username: Теперь введите имя пользователя.
+transmission_configuration_wizard_enter_password: Теперь введите пароль. Не забудьте удалить это сообщение.
+transmission_configuration_wizard_enter_done: Готово.
+transmission_configuration_wizard_enter_configuration_saved: Конфигурация сохранена.
+transmission_configuration_wizard_enter_connecting: Идет подключение к вашему экземпляру transmission...
+transmission_configuration_wizard_enter_connecting_success: Удалось подключиться. Количество торрентов ${count}.
+transmission_configuration_wizard_enter_connecting_error: Ошибка подключения ${err}

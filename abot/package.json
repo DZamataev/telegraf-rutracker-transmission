@@ -1,0 +1,21 @@
+{
+  "name": "abot",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node index.js",
+    "deploy": "docker-compose up -d --build",
+    "undeploy": "docker-compose down",
+    "dev": "docker-compose -f ../docker-compose.dev.yml up -d && nodemon --exec \"npm start\""
+  },
+  "dependencies": {
+    "rutracker-api": "^1.1.0",
+    "telegraf": "^3.25.5",
+    "telegraf-i18n": "^6.4.0",
+    "telegraf-session-redis": "^5.0.0",
+    "transmission-promise": "^1.1.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.7"
+  }
+}

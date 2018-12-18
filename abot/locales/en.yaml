@@ -1,0 +1,55 @@
+greeting: Hello! Want to /start ?
+start: |
+  Hello stranger! I can search for downloads on Rutracker and add them to your Transmission.
+    Чтобы переключиться на русский язык используй команду '/ru'
+    To log into your rutracker account use '/credentialsSetRutracker'
+    To search use command with query '/search YOUR_QUERY'
+    To configure access to your Transmission web service use '/transmissionConfigure'
+    To set Transmission download path use '/transmissionSetPath ABSOLUTE_PATH'
+    To get Transmission downloads status '/transmissionStatus'
+    To stop all downloads '/transmissionStopAll'
+    To start all downloads '/transmissionStartAll'
+transmission_not_configured: You must configure Transmission first. Use /transmissionConfigure
+transmission_path_set: New path set.
+transmission_no_torrents: No torrents.
+transmission_error: Request error.
+transmission_stopped_all: All downloads stopped.
+transmission_started_all: All downloads started.
+transmission_download_added: Torrent added.
+
+begin_searching: Searching for '${term}'.
+pending_link_not_found: Unable to find download link.
+search_is_over: Search is over.
+try_search: Try /search WHAT_YOU_WANT
+
+enter_login: Enter login.
+entered_login: Login set, now enter password.
+entered_password: Password set, now logging in...
+success: Success!
+authentication_error: Unable to authorize. Check your entry.
+authentication_warning: Unable to log into Rutracker, please set your login and password with command /credentialsSetRutracker
+login_is_set: Now your login ${login} will be used to login on Rutracker.
+private_chat_warning: I only work in private chats.
+username_warning: I only work for my master.
+no_results_found: No results.
+here_is_what_i_found: "Here is what I've found:"
+search_complete: Search complete. Enter the torrent number for actions.
+you_picked_torrent: You've selected torrent *${index}* (${title}).
+magnet_link_is: |
+  Magnet-link:
+  ```
+  ${uri}
+  ```
+download_suggestion: Want to add download to Transmission? 
+
+transmission_configuration_wizard_error: Error, try again.
+transmission_configuration_wizard_enter_hostname: Enter hostname.
+transmission_configuration_wizard_enter_port: Now enter port number.
+transmission_configuration_wizard_enter_http: HTTP or HTTPS?
+transmission_configuration_wizard_enter_username: Ok. Now enter username.
+transmission_configuration_wizard_enter_password: Now enter password. Dont forget to delete this message.
+transmission_configuration_wizard_enter_done: Done.
+transmission_configuration_wizard_enter_configuration_saved: Configuration saved.
+transmission_configuration_wizard_enter_connecting: Connecting to transmission...
+transmission_configuration_wizard_enter_connecting_success: Connection success. Total torrents ${count}.
+transmission_configuration_wizard_enter_connecting_error: Connection error ${err}
