@@ -1,6 +1,24 @@
 # Telegram Bot in Node.JS, using Telegraf, for searching torrents at Rutracker and add them to your Transmission web service
 
-(![Demo gif](https://github.com/DZamataev/telegraf-rutracker-transmission/raw/master/gif/demo.gif))
+![Demo gif](https://github.com/DZamataev/telegraf-rutracker-transmission/raw/master/gif/demo.gif)
+
+# Features
+
+* Authorize at Rutracker
+* Configure access to Transmission web service instance
+* Search for available torrents at Rutracker and download them via Transmission
+* Localized into Russian
+
+# Commands
+
+- Чтобы переключиться на русский язык используй команду '/ru'
+- To log into your rutracker account use '/credentialsSetRutracker'
+- To search use command with query '/search YOUR_QUERY'
+- To configure access to your Transmission web service use '/transmissionConfigure'
+- To set Transmission download path use '/transmissionSetPath ABSOLUTE_PATH'
+- To get Transmission downloads status '/transmissionStatus'
+- To stop all downloads '/transmissionStopAll'
+- To start all downloads '/transmissionStartAll'
 
 # How to run
 
