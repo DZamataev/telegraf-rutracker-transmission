@@ -9,6 +9,7 @@ services:
     image: redis:5.0.2-alpine
     command: ["redis-server", "--appendonly", "yes"]
     hostname: redis
+    restart: always
     volumes:
       - redis-data:/data
     ports:
@@ -21,7 +22,7 @@ services:
       # HTTP_API_TOKEN: YOUR_API_TOKEN
       SESSION_HOST: redis
       SESSION_PORT: 6379
-      # ONLY_PRIVATE_CHAT: true
+      ONLY_PRIVATE_CHAT: 0
       # ONLY_USERNAME: ''
     restart: always
     ports:

@@ -307,7 +307,7 @@ bot.use(i18n.middleware())
 // 4) Service middleware for logging, access, special commands
 bot.use((ctx, next) => {
     console.log('Message from user', ctx.chat.username, 'recieved:', ctx.message.text)
-    if (config.ONLY_PRIVATE_CHAT && !(ctx.chat.type == 'private')) {
+    if (config.ONLY_PRIVATE_CHAT == 1 && !(ctx.chat.type == 'private')) {
         return ctx.reply(ctx.i18n.t('private_chat_warning')).then(() => ctx.leaveChat())
     }
     if (config.ONLY_USERNAME.length > 0 && !(ctx.chat.username == config.ONLY_USERNAME)) {
