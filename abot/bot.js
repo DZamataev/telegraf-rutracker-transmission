@@ -13,7 +13,7 @@ const RedisSession = require('telegraf-session-redis')
 
 const TelegrafI18n = require('telegraf-i18n')
 
-const RutrackerApi = require('rutracker-api')
+const RutrackerApi = require('./rutracker-api')
 const rutracker = new RutrackerApi()
 
 const Transmission = require('transmission-promise')
@@ -105,17 +105,17 @@ const searchScene = new Scene('searchScene')
             .then(() => searchPromise(ctx))
     })
     .command((ctx) => {
-        if (/^\/\d{1,3}$/.test(ctx.message.text)) {
+        if (/^\/\d{1,3}/.test(ctx.message.text)) {
             ctx.session.selectedTorrentIndex = parseInt(ctx.message.text.substring("/".length)) - 1
             return selectTorrentPromise(ctx)
         }
     })
-    .hears(/^(Н|н)ай(д|т)и /, (ctx) => {
-        ctx.session.searchTerm = ctx.message.text.substring(ctx.match[0].length)
-        return ctx.reply(ctx.i18n.t('begin_searching', { term: ctx.session.searchTerm }))
-            .then(() => searchPromise(ctx))
-    })
-    .hears(/^\d{1,3}$/, (ctx) => {
+    // .hears(/^(Н|н)ай(д|т)и /, (ctx) => {
+    //     ctx.session.searchTerm = ctx.message.text.substring(ctx.match[0].length)
+    //     return ctx.reply(ctx.i18n.t('begin_searching', { term: ctx.session.searchTerm }))
+    //         .then(() => searchPromise(ctx))
+    // })
+    .hears(/^\d{1,3}/, (ctx) => {
         ctx.session.selectedTorrentIndex = ctx.match[0] - 1
         return selectTorrentPromise(ctx)
     })
@@ -138,7 +138,16 @@ const searchScene = new Scene('searchScene')
     .hears(/^⏏️ Clear/, (ctx) => {
         return ctx.scene.leave().then(() => ctx.reply(ctx.i18n.t('search_is_over')))
     })
-    .on('message', (ctx) => ctx.reply(ctx.i18n.t('try_search')))
+    .on('message', (ctx) => {
+        // ctx.reply(ctx.i18n.t('try_search'))
+
+    //     ctx.session.searchTerm = ctx.message.text.substring(ctx.match[0].length)
+    //     return ctx.reply(ctx.i18n.t('begin_searching', { term: ctx.session.searchTerm }))
+    //         .then(() => searchPromise(ctx))
+        ctx.session.searchTerm = get(['message', 'text'], ctx);
+        return ctx.reply(ctx.i18n.t('begin_searching', { term: ctx.session.searchTerm }))
+            .then(() => searchPromise(ctx))
+    })
 
 
 // Credentials set rutracker scene
@@ -369,13 +378,19 @@ const searchPromise = (ctx) => {
                 torrents.filter(t => t.seeds > 0)
                 ctx.session.pendingSearchResults = []
                 var i = 0
-                var messages = [""]
 
+                var descriptions = []
                 torrents.forEach((torrent, tIndex) => {
                     var itemNumber = tIndex + 1
                     var itemDesription = `\n/${itemNumber} | ${formatBytes(torrent.size)}, ${torrent.seeds} SEED, ${torrent.downloads} DL\n\`\`\`\n${torrent.title}\n\`\`\`\n-----------------\n`
                     ctx.session.pendingSearchResults.push({ id: torrent.id, title: torrent.title })
+                    descriptions.push(itemDesription)
+                })
 
+                descriptions = descriptions.reverse()
+
+                var messages = [""]
+                descriptions.forEach((itemDesription) => {
                     if (messages[i].length + itemDesription.length >= 4096) {
                         i++
                         messages.push("")
@@ -383,7 +398,7 @@ const searchPromise = (ctx) => {
                     messages[i] += itemDesription
                 })
 
-                if (messages.length == 0) {
+                if (messages.length == 1 && messages[0] == "") {
                     return Promise.reject({ sendMessage: ctx.i18n.t('no_results_found') })
                 }
 
