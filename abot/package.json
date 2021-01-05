@@ -13,7 +13,7 @@
     "telegraf-i18n": "^6.4.0",
     "telegraf-session-redis": "^5.0.0",
     "transmission-promise": "^1.1.2",
-    "axios": "^0.17.1",
+    "axios": "^0.21.1",
     "cheerio": "^1.0.0-rc.2",
     "windows-1251": "^1.0.0"
   },
